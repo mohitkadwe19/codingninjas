@@ -3,18 +3,17 @@ using namespace std;
 
 int lengthOfNumber(int k)
 {
-  int currentNumber = 1;
-  int length = 1;
-  for (int i = 1; i <= k; i++)
+  if ((k & 1) == 0 || k == 5)
   {
-    if (currentNumber % k == 0)
+    return -1;
+  }
+  int n = 0;
+  for (int i = 0; i < k; i++)
+  {
+    n = (n * 10) % k + (1 % k);
+    if (n % k == 0)
     {
-      return length;
-    }
-    else
-    {
-      currentNumber = currentNumber * 10 + 1;
-      length++;
+      return i + 1;
     }
   }
   return -1;
